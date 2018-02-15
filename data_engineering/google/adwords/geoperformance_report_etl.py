@@ -41,7 +41,7 @@ def geo_performance_report(client, date_range="YESTERDAY", since=None, until=Non
         skip_report_summary=True)
 
     if report_file != '':
-        root = ET.fromstring(report_file.encode('utf-8'))
+        root = ET.fromstring(report_file)
         for child in root:
             for rows in child:
                 row_dict = rows.attrib
@@ -92,7 +92,7 @@ def db_transfer(costs_data=[], creds_path="db_connect.yaml", date_range="YESTERD
         if conn:
             conn.commit()
             conn.close()
-            print("Transfer to database finished, connection closed.")
+            print("Transfer to database terminated, connection closed.")
 
 
 def main(date_range="YESTERDAY", account_ids=[], since=None, until=None):
@@ -116,15 +116,12 @@ def main(date_range="YESTERDAY", account_ids=[], since=None, until=None):
         db_transfer(costs_data=data_storage, date_range=date_range, since=since, until=until)
 
     except AssertionError:
-        print("""Assertion Error: time_range but be one of the following values: 'TODAY', 'YESTERDAY', 'LAST_7_DAYS', 'LAST_14_DAYS', 'LAST_30_DAYS', 'THIS_MONTH', 'ALL_TIME'""")
+        print("""Assertion Error: time_range but be one of the following values: 'TODAY', 'YESTERDAY', 'LAST_7_DAYS', 'LAST_14_DAYS', 'LAST_30_DAYS', 'THIS_MONTH', 'ALL_TIME', 'CUSTOM_DATE'.
+            If time_range == 'CUSTOM_DATE', since and until parameter must be filled in with the start and end date of the report.""")
 
 if __name__ == '__main__':
 
-    ACCOUNT_IDS = ['844-136-2375', '222-457-8818', '241-834-9036', '581-082-2626', '500-589-5304', '669-766-5325',
-                  '570-749-7267', '909-997-0857', '450-937-5102', '166-711-3859', '525-116-4620', '412-965-9338',
-                  '571-406-5157', '259-029-4375', '679-429-7210', '490-236-3881', '304-825-5628', '971-415-3253',
-                  '535-861-7016', '152-050-5706', '281-324-4238', '795-483-2290', '668-907-2912', '556-756-7630',
-                  '773-739-9889', '750-060-2157', '162-832-0271', '167-354-0832']
+    ACCOUNT_IDS = ['XXX-XXX-XXX'] # Should be loaded from a config file.
 
-    #main(date_range="CUSTOM_DATE", account_ids=ACCOUNT_IDS, since="2017-11-01", until="2018-01-31")
-    main(date_range="YESTERDAY", account_ids=ACCOUNT_IDS)
+    main(date_range="CUSTOM_DATE", account_ids=ACCOUNT_IDS, since="2017-11-01", until="2018-01-31") # Example for custom date rate
+    #main(date_range="YESTERDAY", account_ids=ACCOUNT_IDS)
