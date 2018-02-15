@@ -123,5 +123,5 @@ if __name__ == '__main__':
 
     ACCOUNT_IDS = ['XXX-XXX-XXX'] # Should be loaded from a config file.
 
-    main(date_range="CUSTOM_DATE", account_ids=ACCOUNT_IDS, since="2017-11-01", until="2018-01-31") # Example for custom date rate
+    main(date_range="CUSTOM_DATE", account_ids=ACCOUNT_IDS, since="2017-11-01", until="2018-01-31") # Example for custom date
     #main(date_range="YESTERDAY", account_ids=ACCOUNT_IDS)
