@@ -9,8 +9,8 @@ from slackclient import SlackClient
 
 def post_slack_msg(credentials,
                    text,
-                   username='Airflow',
-                   channel='#e-bi-airflow-notifs'):
+                   username,
+                   channel):
     """
     Posts message on Slack
     :param credentials: path to credentials file
