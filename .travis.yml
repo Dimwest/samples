@@ -21,6 +21,9 @@ env:
     - STAGING_URL=jdbc:mysql://127.0.0.1:3306
     - PROD_URL=jdbc:mysql://127.0.0.1:3306
     - SCHEMAS=public
+
+before_install:
+  - chmod +x ./data_engineering/tests/migrate_script.sh
     
 install:
   - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz
