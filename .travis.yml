@@ -26,5 +26,5 @@ install:
   - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz
 
 script:
-  - ./data_engineering_tests/migrate_script.sh
+  - ./data_engineering/tests/migrate_script.sh
 
