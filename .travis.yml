@@ -11,18 +11,21 @@ services:
   - mysql
 
 env:
-  # STAGING_USER
-  - secure: "JomuXbxf4i7MTAaatUTmrzkfGU63rbOuNSQVQ7qe1tWWrwpsZfMGiAGEPz5iDPh95QtO3Wl3XiM52o+JfBx5IAqlGCvJKs/mnZpD30AgLOCUFoNxctAjl6nwr6D3Z7pdrW50M5pdLJ1rib+o70IOXS+OJCJjCScdUCM15XVD/Z/qkQlYVzqkyEzKPEKD5GGsUL6UI9edWxkX7a9+g/x2alxexZM3H+x8s7+sz684n+WgQAMhGv12Ks66jyhwXWkShRlMYF5ghlYZez33YDQdz5v8iHW25M9n4Fwuraq+yGYPVL3jGAz1K0gh5194T0NAew+1XbS/UQJmJ7hNodeYyE7O/Jdgm/8OcKu5HOrxoJxldiHvCNCjRtJI0FbjsTleLxRWbulrsZGhDX1UefBhouePyCQNm0a0fAgmdBohsbCcLunT35qosmofDuaZ06F1FSfNTHEhRVLnCTwrCTo8X9KNraXo8Tha5bP1RSRi7J9PYa6xxCAlLVnZgVjimi2xxumxNfZag0QlVcfG2cl7qa2TBU3dImJB9xfkbxWDWsY0OfejoCq4AUCTuhAQK7/wXAK7DV6Nct+zuoSv+eI9Tdpp/8Zzwy4/D/0nBmbH9qVg4uuWCgfFDE0O6mHJdTUxAB4kK1ZzBSU8RhywhZdAAi7HkdHmYtL2jRq6pWBJ4Sk="
-  # STAGING_PW
-  - secure: "L07gCWQTryn4pQG4cvjybu1Zboyiwa/UV+xw//OrJEv9kLMn052ob7Lxic69/o0yvk6+ABIII8CvN23PFTnyhTqGJzOb1GisleuYOfYM0GBeZ7lLjXMV0uXVaw2zeWjlSJwJpPsPEtL4F+5JKUyMmOBnqvT9YhweDd8DCWSogg+vtkzGnNZAqb5a8Ou28VNShYIR05k6EccqEzVrEbGMdX/r6UtoR4tNtwyDj5z4pBibKTNVEAdTuNtYxlXN7cEp6qYCheZ2qLqXP45e2Crd9oNMqDSPY7O5+vbI6jJUDxgIJ9gQ5POZSoyZASoNoaTTqz3EfNuBK7LUlXzPog9uVgbbw3RQaxlBAJKR9o5CJrLpBntpvGZgCmEF/FIIP05GE15B96G8jXMgPleB81ojCa22t0/LRk15AUpBKF11qS0N3joYSWQLm4hucdKiGQXRgizELjb3T8uUtCjdKRxpLBol7aTI6A9GVNUcvWXbKbQ5hwssrqR6dq1OTqQgbPIOl43fbbVCSdR9+hG0H1IW8lBTq1EvtEEqCwTXKUF8quO1nD8BtXTn20/F/uyrh2bZ+AhGCZNjjVW/Jbk7cZ3SipyvIeFTjV8J/h646uTHJ6OVBVCVOdwbFm5PNivSJdiiVYttAs2oTXPtTToFaplelCtFLOPvc6t105UvmtZ4yQo="
-  - STAGING_URL=jdbc:mysql://127.0.0.1:3306
-  - SCHEMAS=public
+  - global:
+    # STAGING_USER
+    - secure: "JomuXbxf4i7MTAaatUTmrzkfGU63rbOuNSQVQ7qe1tWWrwpsZfMGiAGEPz5iDPh95QtO3Wl3XiM52o+JfBx5IAqlGCvJKs/mnZpD30AgLOCUFoNxctAjl6nwr6D3Z7pdrW50M5pdLJ1rib+o70IOXS+OJCJjCScdUCM15XVD/Z/qkQlYVzqkyEzKPEKD5GGsUL6UI9edWxkX7a9+g/x2alxexZM3H+x8s7+sz684n+WgQAMhGv12Ks66jyhwXWkShRlMYF5ghlYZez33YDQdz5v8iHW25M9n4Fwuraq+yGYPVL3jGAz1K0gh5194T0NAew+1XbS/UQJmJ7hNodeYyE7O/Jdgm/8OcKu5HOrxoJxldiHvCNCjRtJI0FbjsTleLxRWbulrsZGhDX1UefBhouePyCQNm0a0fAgmdBohsbCcLunT35qosmofDuaZ06F1FSfNTHEhRVLnCTwrCTo8X9KNraXo8Tha5bP1RSRi7J9PYa6xxCAlLVnZgVjimi2xxumxNfZag0QlVcfG2cl7qa2TBU3dImJB9xfkbxWDWsY0OfejoCq4AUCTuhAQK7/wXAK7DV6Nct+zuoSv+eI9Tdpp/8Zzwy4/D/0nBmbH9qVg4uuWCgfFDE0O6mHJdTUxAB4kK1ZzBSU8RhywhZdAAi7HkdHmYtL2jRq6pWBJ4Sk="
+    # STAGING_PW
+    - secure: "L07gCWQTryn4pQG4cvjybu1Zboyiwa/UV+xw//OrJEv9kLMn052ob7Lxic69/o0yvk6+ABIII8CvN23PFTnyhTqGJzOb1GisleuYOfYM0GBeZ7lLjXMV0uXVaw2zeWjlSJwJpPsPEtL4F+5JKUyMmOBnqvT9YhweDd8DCWSogg+vtkzGnNZAqb5a8Ou28VNShYIR05k6EccqEzVrEbGMdX/r6UtoR4tNtwyDj5z4pBibKTNVEAdTuNtYxlXN7cEp6qYCheZ2qLqXP45e2Crd9oNMqDSPY7O5+vbI6jJUDxgIJ9gQ5POZSoyZASoNoaTTqz3EfNuBK7LUlXzPog9uVgbbw3RQaxlBAJKR9o5CJrLpBntpvGZgCmEF/FIIP05GE15B96G8jXMgPleB81ojCa22t0/LRk15AUpBKF11qS0N3joYSWQLm4hucdKiGQXRgizELjb3T8uUtCjdKRxpLBol7aTI6A9GVNUcvWXbKbQ5hwssrqR6dq1OTqQgbPIOl43fbbVCSdR9+hG0H1IW8lBTq1EvtEEqCwTXKUF8quO1nD8BtXTn20/F/uyrh2bZ+AhGCZNjjVW/Jbk7cZ3SipyvIeFTjV8J/h646uTHJ6OVBVCVOdwbFm5PNivSJdiiVYttAs2oTXPtTToFaplelCtFLOPvc6t105UvmtZ4yQo="
+    - STAGING_URL=jdbc:mysql://127.0.0.1:3306
+    - SCHEMAS=public
 
 install:
   - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz
 
 script:
-  - cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../data_engineering/ -schemas=$SCHEMAS migrate
+  - cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../data_engineering/tests/flyway_migrations -schemas=$SCHEMAS migrate
 
 after_failure:
-  - cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../data_engineering/ -schemas=$SCHEMAS repair
+  - cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../data_engineering/tests/flyway_migrations -schemas=$SCHEMAS repair
+
+
