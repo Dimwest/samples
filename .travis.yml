@@ -24,7 +24,7 @@ install:
 
 script:
   - cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:data_engineering/ -schemas=$SCHEMAS migrate
-  - echo "my_test_script.sh"
+  - pwd
 
 after_failure:
   - cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:data_engineering/ -schemas=$SCHEMAS repair
