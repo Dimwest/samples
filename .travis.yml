@@ -14,10 +14,10 @@ before_install:
   - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz
 
 install:
-  - cd flyway-5.0.7 && flyway -url=127.0.0.1 -user=$root -locations=filesystem:/data_engineering migrate 
+  - cd flyway-5.0.7 && flyway -url=jdbc:mysql://127.0.0.1:3306 -user=$root -locations=filesystem:/data_engineering migrate 
 
 script:
   - echo "my_test_script.sh"
 
 after_failure:
-  - cd flyway-5.0.7 && flyway -url=127.0.0.1 -user=$root -locations=filesystem:/data_engineering migrate 
+  - cd flyway-5.0.7 && flyway -url=jdbc:mysql://127.0.0.1:3306 -user=$root -locations=filesystem:/data_engineering repair 
