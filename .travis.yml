@@ -26,8 +26,5 @@ install:
   - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz
 
 script:
-  - if [ $TRAVIS_BRANCH = "test" ] then cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS migrate elif [ $TRAVIS_BRANCH = "master" ] then cd flyway-5.0.7 && ./flyway -url=$PROD_URL -user=$PROD_USER -password=$PROD_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS migrate fi
-
-after_failure:
-  - if [ $TRAVIS_BRANCH = "test" ] then cd flyway-5.0.7 && ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS repair elif [ $TRAVIS_BRANCH = "master" ] then cd flyway-5.0.7 && ./flyway -url=$PROD_URL -user=$PROD_USER -password=$PROD_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS repair fi
+  - ./data_engineering_tests/migrate_script.sh
 
