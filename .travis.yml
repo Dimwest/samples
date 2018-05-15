@@ -14,7 +14,7 @@ before_install:
   - export STAGING_URL=jdbc:mysql://127.0.0.1:3306
   - export STAGING_USER=root
   - export STAGING_PW=""
-  - export LOCATIONS=filesystem:/data_engineering
+  - export LOCATIONS="filesystem:/data_engineering"
   - export SCHEMAS=public
 
 install:
