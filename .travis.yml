@@ -8,6 +8,9 @@ branches:
   - test
   - master
 
+services:
+  - mysql
+
 env:
   - global:
     # STAGING_USER
@@ -21,13 +24,14 @@ env:
     - STAGING_URL=jdbc:mysql://127.0.0.1:3306
     - PROD_URL=jdbc:mysql://127.0.0.1:3306
     - SCHEMAS=public
-
-before_install:
-  - chmod +x ./data_engineering/tests/migrate_script.sh
     
 install:
-  - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz
+  - wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7.tar.gz && tar -xvzf flyway-commandline-5.0.7.tar.gz && cd flyway-5.0.7
 
 script:
-  - ./data_engineering/tests/migrate_script.sh
-
+ - |
+    if [ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]; then
+      ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS migrate
+    elif [ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]; then
+      ./flyway -url=$PROD_URL -user=$PROD_USER -password=$PROD_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS migrate
+    fi
