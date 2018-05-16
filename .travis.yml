@@ -30,8 +30,17 @@ install:
 
 script:
  - |
-    if [ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]; then
+    if [ $TRAVIS_BRANCH == "test" ]; then
       ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS migrate
-    elif [ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]; then
+    elif [ $TRAVIS_BRANCH == "master" ]; then
       ./flyway -url=$PROD_URL -user=$PROD_USER -password=$PROD_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS migrate
     fi
+
+after_failure:
+ - |
+    if [ $TRAVIS_BRANCH == "test" ]; then
+      ./flyway -url=$STAGING_URL -user=$STAGING_USER -password=$STAGING_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS repair
+    elif [ $TRAVIS_BRANCH == "master" ]; then
+      ./flyway -url=$PROD_URL -user=$PROD_USER -password=$PROD_PW -locations=filesystem:../analyst/dwh/incremental_migrations -schemas=$SCHEMAS repair
+    fi
+
